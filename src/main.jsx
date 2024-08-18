@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import Dashboard from './pages/Dashboard';
-import Highlight from './pages/Highlight';
+import Highlight from './pages/HighlightedCars';
 import './index.css'; // Assuming you have some global styles
 
 function App() {
