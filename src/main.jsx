@@ -1,36 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider, Link } from 'react-router-dom';
 import Dashboard from './pages/Dashboard';
 import Highlight from './pages/HighlightedCars';
 import './index.css'; // Assuming you have some global styles
 
-function App() {
-  return (
-    <Router>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Dashboard</Link>
-          </li>
-          <li>
-            <Link to="/highlight">Highlighted Cars</Link>
-          </li>
-        </ul>
-      </nav>
-      <Routes>
-        <Route path="/" element={<Dashboard />} />
-        <Route path="/highlight" element={<Highlight />} />
-      </Routes>
-    </Router>
-  );
-}
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Dashboard/>,
+    errorElement: <div>404 not Found</div>
+  },
+  {
+    path: '/HighlightedCars',
+    element: <Highlight/>,
+  },
+]);
 
-// Render the App component
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </React.StrictMode>,
 );
-
-export default App;
