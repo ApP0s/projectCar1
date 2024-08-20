@@ -15,7 +15,6 @@ function Root() {
         </Container>
       </Navbar>
       <Outlet />
-      
     </>
   );
 }
