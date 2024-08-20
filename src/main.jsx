@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider, Link } from 'react-router-dom';
 import Root from './pages/root';
 import Dashboard from './pages/Dashboard';
-import Highlight from './pages/HighlightedCars';
+import HighlightedCars from './pages/HighlightedCars';
 import './index.css'; // Assuming you have some global styles
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -19,7 +19,8 @@ const router = createBrowserRouter([
       },
       {
         path: '/Hightlight',
-        element: <Highlight/>,
+        element: <HighlightedCars/>,
+        errorElement: <div>404 not Found</div>,
       },
     ],
   },
