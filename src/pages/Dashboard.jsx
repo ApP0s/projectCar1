@@ -1,85 +1,75 @@
-import React, { useEffect, useState } from 'react';
-import { Container, Row, Col, Card, Button, ButtonGroup, Form } from 'react-bootstrap';
-import carData from '../dataRod/taladrod-cars.json';
+import React from 'react';
+
+import carJson from "../dataRod/taladrod-cars.min.json";
+import { Table } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import PieChart from '../components/pie_Chart.jsx';
+import StackedBarChart from '../components/StackedBarChart.jsx';
+import './Dashboard.css';
 
 const Dashboard = () => {
-  const [cars, setCars] = useState([]);
-  const [selectedBrand, setSelectedBrand] = useState('All');
-  const [searchQuery, setSearchQuery] = useState('');
+  const carsArray = carJson.Cars; // Access the array of cars from the "Cars" key
 
-  useEffect(() => {
-    setCars(carData.Cars);
-  }, []);
+  // Step 1: Process the data to group by brand and model
+  const brandData = carsArray.reduce((acc, car) => {
+    const brand = car.NameMMT.split(' ')[0]; // Get the brand name (e.g., "HONDA")
+    const model = car.Model;
 
-  // Extract unique brands from the car data
-  const brands = ['All', ...new Set(cars.map(car => car.NameMMT.split(' ')[0]))];
-
-  const filterCars = () => {
-    let filteredCars = cars;
-
-    if (selectedBrand !== 'All') {
-      filteredCars = filteredCars.filter(car => car.NameMMT.split(' ')[0] === selectedBrand);
+    if (!acc[brand]) {
+      acc[brand] = { count: 0, totalValue: 0, models: {} };
     }
 
-    if (searchQuery) {
-      filteredCars = filteredCars.filter(car =>
-        car.NameMMT.toLowerCase().includes(searchQuery.toLowerCase())
-      );
+    if (!acc[brand].models[model]) {
+      acc[brand].models[model] = { count: 0, totalValue: 0 };
     }
 
-    return filteredCars;
-  };
+    // Convert price to number, remove commas if present
+    const price = parseInt(car.Prc.replace(/,/g, ''));
 
+    acc[brand].count += 1;
+    acc[brand].totalValue += price;
+    acc[brand].models[model].count += 1;
+    acc[brand].models[model].totalValue += price;
+
+    return acc;
+  }, {});
+
+  // Step 2: Render the table using react-bootstrap's Table component
   return (
-    <Container className="mt-4">
-      <Row className="align-items-center mb-4">
-        <Col>
-          <h1>Car Dashboard</h1>
-        </Col>
-        <Col xs="auto">
-          <Form inline>
-            <Form.Control
-              type="text"
-              placeholder="Search cars..."
-              className="mr-sm-2"
-              value={searchQuery}
-              onChange={e => setSearchQuery(e.target.value)}
-            />
-          </Form>
-        </Col>
-      </Row>
-
-      <ButtonGroup className="mb-4">
-        {brands.map(brand => (
-          <Button 
-            key={brand} 
-            variant={selectedBrand === brand ? 'primary' : 'outline-primary'}
-            onClick={() => setSelectedBrand(brand)}
-          >
-            {brand}
-          </Button>
-        ))}
-      </ButtonGroup>
-
-      <Row>
-        {filterCars().map(car => (
-          <Col md={4} key={car.Cid} className="mb-4">
-            <Card className="shadow-sm">
-              <Card.Img variant="top" src={car.Img300} alt={car.Model} />
-              <Card.Body>
-                <Card.Title>{car.NameMMT}</Card.Title>
-                <Card.Text>
-                  Price: {car.Prc} <br />
-                  Year: {car.Yr} <br />
-                  Province: {car.Province} <br />
-                  Views: {car.PageViews}
-                </Card.Text>
-              </Card.Body>
-            </Card>
-          </Col>
-        ))}
-      </Row>
-    </Container>
+    <div>
+      <h1>Dashboard</h1>
+      <PieChart/>
+      <StackedBarChart/>
+      <Table striped bordered hover>
+        <thead>
+          <tr>
+            <th>Brand / Model</th>
+            <th>Number of Cars</th>
+            <th>Total Value (Baht)</th>
+          </tr>
+        </thead>
+        <tbody>
+          {Object.keys(brandData).map((brand) => (
+            <React.Fragment key={brand}>
+              <tr>
+                <td><strong>{brand}</strong></td>
+                <td>{brandData[brand].count}</td>
+                <td>{brandData[brand].totalValue.toLocaleString()}</td>
+              </tr>
+              {Object.keys(brandData[brand].models).map((model) => (
+                <tr key={model}>
+                  <td style={{ paddingLeft: '20px' }}>
+                    {brand} / {model}
+                  </td>
+                  <td>{brandData[brand].models[model].count}</td>
+                  <td>{brandData[brand].models[model].totalValue.toLocaleString()}</td>
+                </tr>
+              ))}
+            </React.Fragment>
+          ))}
+        </tbody>
+      </Table>
+    </div>
   );
 };
 
