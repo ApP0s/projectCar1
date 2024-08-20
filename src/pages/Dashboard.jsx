@@ -1,5 +1,10 @@
 import React from 'react';
+
 import carJson from "../dataRod/taladrod-cars.min.json";
+import { Table } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import PieChart from '../components/pie_Chart.jsx';
+import StackedBarChart from '../components/StackedBarChart.jsx';
 
 const Dashboard = () => {
   const carsArray = carJson.Cars; // Access the array of cars from the "Cars" key
@@ -28,11 +33,13 @@ const Dashboard = () => {
     return acc;
   }, {});
 
-  // Step 2: Render the table
+  // Step 2: Render the table using react-bootstrap's Table component
   return (
     <div>
       <h1>Dashboard</h1>
-      <table>
+      <PieChart/>
+      <StackedBarChart/>
+      <Table striped bordered hover>
         <thead>
           <tr>
             <th>Brand / Model</th>
@@ -60,7 +67,7 @@ const Dashboard = () => {
             </React.Fragment>
           ))}
         </tbody>
-      </table>
+      </Table>
     </div>
   );
 };
