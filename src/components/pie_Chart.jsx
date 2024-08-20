@@ -1,7 +1,7 @@
 import React from 'react';
 import { Pie } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
-import carJson from '../dataRod/taladrod-cars.min.json'; // Adjust the path as necessary
+import carJson from '../dataRod/taladrod-cars.min.json';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
