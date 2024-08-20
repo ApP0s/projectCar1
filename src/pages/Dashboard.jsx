@@ -5,7 +5,6 @@ import { Table } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import PieChart from '../components/pie_Chart.jsx';
 import StackedBarChart from '../components/StackedBarChart.jsx';
-import './Dashboard.css';
 
 const Dashboard = () => {
   const carsArray = carJson.Cars; // Access the array of cars from the "Cars" key
