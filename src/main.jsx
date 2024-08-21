@@ -20,7 +20,6 @@ const router = createBrowserRouter([
       {
         path: '/Hightlight',
         element: <HighlightedCars/>,
-        errorElement: <div>404 not Found</div>,
       },
     ],
   },
