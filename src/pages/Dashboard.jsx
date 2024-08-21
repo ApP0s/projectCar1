@@ -1,5 +1,4 @@
 import React from 'react';
-
 import carJson from "../dataRod/taladrod-cars.min.json";
 import { Table } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';

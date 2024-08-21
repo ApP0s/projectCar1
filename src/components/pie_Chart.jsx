@@ -2,6 +2,7 @@ import React from 'react';
 import { Pie } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import carJson from '../dataRod/taladrod-cars.min.json';
+import './pie_Chart.css';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -50,10 +51,16 @@ const PieChart = () => {
     ],
   };
 
+  // Chart options to control canvas size
+  const chartOptions = {
+    maintainAspectRatio: false, // Allow flexible sizing
+    responsive: true,
+  };
+
   return (
-    <div>
+    <div className="pie-chart-container">
       <h2>Car Brand Distribution</h2>
-      <Pie data={chartData} />
+      <Pie data={chartData} options={chartOptions} />
     </div>
   );
 };
