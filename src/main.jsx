@@ -4,7 +4,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Root from './pages/root';
 import Dashboard from './pages/Dashboard';
 import HighlightedCars from './pages/HighlightedCars';
-import './index.css'; // Assuming you have some global styles
+import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const router = createBrowserRouter([
