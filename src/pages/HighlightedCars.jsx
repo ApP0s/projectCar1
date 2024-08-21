@@ -4,12 +4,16 @@ import carData from '../dataRod/taladrod-cars.json';
 
 const HighlightedCars = () => {
   const [cars, setCars] = useState([]);
+  const [highlightedCars, setHighlightedCars] = useState([]);
   const [selectedBrand, setSelectedBrand] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
   const [searchInput, setSearchInput] = useState('');
 
   useEffect(() => {
     setCars(carData.Cars);
+    // Load highlighted cars from localStorage on component mount
+    const storedHighlightedCars = JSON.parse(localStorage.getItem('highlightedCars')) || [];
+    setHighlightedCars(storedHighlightedCars);
   }, []);
 
   // Extract unique brands from the car data
@@ -35,6 +39,30 @@ const HighlightedCars = () => {
     setSearchQuery(searchInput);
   };
 
+  // Toggle highlight status of a car
+  const toggleHighlight = (car) => {
+    const isHighlighted = highlightedCars.some(highlightedCar => highlightedCar.Cid === car.Cid);
+
+    if (isHighlighted) {
+      // Remove from highlight
+      const updatedHighlightedCars = highlightedCars.filter(highlightedCar => highlightedCar.Cid !== car.Cid);
+      setHighlightedCars(updatedHighlightedCars);
+      localStorage.setItem('highlightedCars', JSON.stringify(updatedHighlightedCars));
+    } else {
+      // Add to highlight
+      const updatedHighlightedCars = [...highlightedCars, car];
+      setHighlightedCars(updatedHighlightedCars);
+      localStorage.setItem('highlightedCars', JSON.stringify(updatedHighlightedCars));
+    }
+  };
+
+  // Remove car from highlight
+  const removeHighlightedCar = (car) => {
+    const updatedHighlightedCars = highlightedCars.filter(highlightedCar => highlightedCar.Cid !== car.Cid);
+    setHighlightedCars(updatedHighlightedCars);
+    localStorage.setItem('highlightedCars', JSON.stringify(updatedHighlightedCars));
+  };
+
   return (
     <Container className="mt-4">
       <Row className="align-items-center mb-4">
@@ -54,6 +82,35 @@ const HighlightedCars = () => {
         </Col>
       </Row>
 
+      {/* Display highlighted cars at the top */}
+      {highlightedCars.length > 0 && (
+        <Row className="mb-4">
+          <Col>
+            <h2>Pinned Cars</h2>
+            <Row>
+              {highlightedCars.map(car => (
+                <Col xs={12} sm={6} md={4} lg={3} key={car.Cid} className="mb-4">
+                  <Card className="shadow-sm h-100">
+                    <Card.Img variant="top" src={car.Img300} alt={car.Model} />
+                    <Card.Body>
+                      <Card.Title>{car.NameMMT}</Card.Title>
+                      <Card.Text>
+                        Price: {car.Prc} <br />
+                        Year: {car.Yr} <br />
+                        Province: {car.Province} <br />
+                        Views: {car.PageViews}
+                      </Card.Text>
+                      <Button variant="danger" onClick={() => removeHighlightedCar(car)}>Remove</Button>
+                    </Card.Body>
+                  </Card>
+                </Col>
+              ))}
+            </Row>
+          </Col>
+        </Row>
+      )}
+
+      {/* Button group for selecting brands */}
       <ButtonGroup className="mb-4 d-flex flex-wrap">
         {brands.map(brand => (
           <Button
@@ -67,6 +124,7 @@ const HighlightedCars = () => {
         ))}
       </ButtonGroup>
 
+      {/* Display the list of cars */}
       <Row>
         {filterCars().map(car => (
           <Col xs={12} sm={6} md={4} lg={3} key={car.Cid} className="mb-4">
@@ -80,6 +138,12 @@ const HighlightedCars = () => {
                   Province: {car.Province} <br />
                   Views: {car.PageViews}
                 </Card.Text>
+                <Button
+                  variant={highlightedCars.some(highlightedCar => highlightedCar.Cid === car.Cid) ? 'danger' : 'success'}
+                  onClick={() => toggleHighlight(car)}
+                >
+                  {highlightedCars.some(highlightedCar => highlightedCar.Cid === car.Cid) ? 'Cancel' : 'Highlight'}
+                </Button>
               </Card.Body>
             </Card>
           </Col>
@@ -90,3 +154,4 @@ const HighlightedCars = () => {
 };
 
 export default HighlightedCars;
+
