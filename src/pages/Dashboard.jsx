@@ -1,9 +1,10 @@
 import React from 'react';
 import carJson from "../dataRod/taladrod-cars.min.json";
-import { Table } from 'react-bootstrap';
+import { Container, Table } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import PieChart from '../components/pie_Chart.jsx';
 import StackedBarChart from '../components/StackedBarChart.jsx';
+import '../components/Table.css';
 
 const Dashboard = () => {
   const carsArray = carJson.Cars; // Access the array of cars from the "Cars" key
@@ -34,40 +35,45 @@ const Dashboard = () => {
 
   // Step 2: Render the table using react-bootstrap's Table component
   return (
-    <div>
-      <h1>Dashboard</h1>
+    <Container>
       <PieChart/>
       <StackedBarChart/>
-      <Table striped bordered hover>
-        <thead>
-          <tr>
-            <th>Brand / Model</th>
-            <th>Number of Cars</th>
-            <th>Total Value (Baht)</th>
-          </tr>
-        </thead>
-        <tbody>
-          {Object.keys(brandData).map((brand) => (
-            <React.Fragment key={brand}>
-              <tr>
-                <td><strong>{brand}</strong></td>
-                <td>{brandData[brand].count}</td>
-                <td>{brandData[brand].totalValue.toLocaleString()}</td>
-              </tr>
-              {Object.keys(brandData[brand].models).map((model) => (
-                <tr key={model}>
-                  <td style={{ paddingLeft: '20px' }}>
-                    {brand} / {model}
+      <div className="table-container">
+        <Table striped bordered hover>
+          <thead>
+            <tr>
+              <th>Brand / Model</th>
+              <th>Number of Cars</th>
+              <th>Total Value (Baht)</th>
+            </tr>
+          </thead>
+          <tbody>
+            {Object.keys(brandData).map((brand) => (
+              <React.Fragment key={brand}>
+                <tr>
+                  <td>
+                    <strong>{brand}</strong>
                   </td>
-                  <td>{brandData[brand].models[model].count}</td>
-                  <td>{brandData[brand].models[model].totalValue.toLocaleString()}</td>
+                  <td>{brandData[brand].count}</td>
+                  <td>{brandData[brand].totalValue.toLocaleString()}</td>
                 </tr>
-              ))}
-            </React.Fragment>
-          ))}
-        </tbody>
-      </Table>
-    </div>
+                {Object.keys(brandData[brand].models).map((model) => (
+                  <tr key={model}>
+                    <td style={{ paddingLeft: "20px" }}>
+                      {brand} / {model}
+                    </td>
+                    <td>{brandData[brand].models[model].count}</td>
+                    <td>
+                      {brandData[brand].models[model].totalValue.toLocaleString()}
+                    </td>
+                  </tr>
+                ))}
+              </React.Fragment>
+            ))}
+          </tbody>
+        </Table>
+      </div>
+    </Container>
   );
 };
 
