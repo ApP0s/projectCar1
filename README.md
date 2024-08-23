@@ -3,7 +3,7 @@
 this project is about Dashboard and Hightlight
 especially, graph and things for the owner to understand the data.
 
-<img src="https://github.com/ApP0s/projectCar1/blob/main/webgif.gif?raw=true" alt="screenshot" width="750" height="400/">
+<img src="https://github.com/ApP0s/projectCar1/blob/main/src/webgif.gif?raw=true" alt="screenshot" width="750" height="400/">
 
 ## Tool for this project
 *   React
