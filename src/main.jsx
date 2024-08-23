@@ -7,23 +7,29 @@ import HighlightedCars from './pages/HighlightedCars';
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const router = createBrowserRouter([
+// Set the basename to '/car-analys'
+const router = createBrowserRouter(
+  [
+    {
+      path: '/',
+      element: <Root/>,
+      errorElement: <div>404 not Found</div>,
+      children: [
+        {
+          path: "/",
+          element: <Dashboard />,
+        },
+        {
+          path: '/Hightlight',
+          element: <HighlightedCars/>,
+        },
+      ],
+    },
+  ],
   {
-    path: '/',
-    element: <Root/>,
-    errorElement: <div>404 not Found</div>,
-    children: [
-      {
-        path: "/",
-        element: <Dashboard />,
-      },
-      {
-        path: '/Hightlight',
-        element: <HighlightedCars/>,
-      },
-    ],
-  },
-]);
+    basename: '/car-analys',
+  }
+);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
