@@ -65,22 +65,7 @@ const HighlightedCars = () => {
 
   return (
     <Container className="mt-4">
-      <Row className="align-items-center mb-4">
-        <Col xs={12} md={6}>
-          <h1>Highlighted Cars</h1>
-        </Col>
-        <Col xs={12} md={6} className="d-flex justify-content-md-end justify-content-center">
-          <InputGroup className="w-100">
-            <Form.Control
-              type="text"
-              placeholder="Search cars..."
-              value={searchInput}
-              onChange={e => setSearchInput(e.target.value)}
-            />
-            <Button variant="primary" onClick={handleSearch}>Search</Button>
-          </InputGroup>
-        </Col>
-      </Row>
+
 
       {/* Display highlighted cars at the top */}
       {highlightedCars.length > 0 && (
@@ -109,6 +94,24 @@ const HighlightedCars = () => {
           </Col>
         </Row>
       )}
+
+      {/* Move search bar here, below the pinned cars */}
+      <Row className="align-items-center mb-4">
+        <Col xs={12} md={6}>
+          <h3>Search Cars</h3>
+        </Col>
+        <Col xs={12} md={6} className="d-flex justify-content-md-end justify-content-center">
+          <InputGroup className="w-100">
+            <Form.Control
+              type="text"
+              placeholder="Search cars..."
+              value={searchInput}
+              onChange={e => setSearchInput(e.target.value)}
+            />
+            <Button variant="primary" onClick={handleSearch}>Search</Button>
+          </InputGroup>
+        </Col>
+      </Row>
 
       {/* Button group for selecting brands */}
       <ButtonGroup className="mb-4 d-flex flex-wrap">
@@ -142,7 +145,7 @@ const HighlightedCars = () => {
                   variant={highlightedCars.some(highlightedCar => highlightedCar.Cid === car.Cid) ? 'danger' : 'success'}
                   onClick={() => toggleHighlight(car)}
                 >
-                  {highlightedCars.some(highlightedCar => highlightedCar.Cid === car.Cid) ? 'Cancel' : 'Highlight'}
+                  {highlightedCars.some(highlightedCar => highlightedCar.Cid === car.Cid) ? 'Unpin' : 'Pin'}
                 </Button>
               </Card.Body>
             </Card>
@@ -154,4 +157,3 @@ const HighlightedCars = () => {
 };
 
 export default HighlightedCars;
-
