@@ -53,7 +53,7 @@ const PieChart = () => {
 
   // Chart options to control canvas size
   const chartOptions = {
-    maintainAspectRatio: false, // Allow flexible sizing
+    maintainAspectRatio: false,
     responsive: true,
   };
 

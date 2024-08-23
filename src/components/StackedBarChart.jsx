@@ -2,7 +2,7 @@ import React from 'react';
 import { Bar } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
 import carJson from '../dataRod/taladrod-cars.min.json';
-import './stacked_BarChart.css'; // Make sure the path matches your project structure
+import './stacked_BarChart.css';
 
 
 
@@ -53,15 +53,35 @@ const StackedBarChart = () => {
         display: true,
         text: 'Number of Cars by Model and Brand',
       },
+      legend: {
+        position: 'bottom',
+        labels: {
+          boxWidth: 10,
+        },
+      },
     },
+    maintainAspectRatio: false, // Allows the chart to take up more vertical space
     responsive: true,
     scales: {
       x: {
         stacked: true,
+        ticks: {
+          autoSkip: false,
+          maxRotation: 45, // Rotate x-axis labels to fit them better
+          minRotation: 0,
+        },
       },
       y: {
         stacked: true,
         beginAtZero: true,
+        ticks: {
+          stepSize: 10, // Adjust step size for better spacing
+          padding: 15,  // Increase padding between ticks and axis line
+        },
+        grid: {
+          display: true,
+          drawBorder: false,
+        },
       },
     },
   };
