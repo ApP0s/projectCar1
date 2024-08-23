@@ -4,9 +4,40 @@ this project is about Dashboard and Hightlight
 especially, graph and things for the owner to understand the data.
 
 ## Tool for this project
-* react 
-* react-routing
-* chart.js
-* bootstrap
-
+*   React
+*   React-Bootstrap
+*   Vite
+*   Bootstrap
+*   React-Chartjs
+*   React-Router
+*   ChartJS
 # Features to show
+
+Here're some of the project's best features:
+
+*   View and search total cars, total value, and cars by brand value and quantity
+*   View car images
+*   View the highlighted Car the you pin or fav
+
+<h2>Installation Steps:</h2>
+
+<p>1. Clone this repository</p>
+```
+$   git clone https://github.com/ApP0s/projectCar1.git
+```
+
+<p>2. Go into the repository</p>
+```
+$   cd projectcar1
+```
+
+<p>3. Install dependencies (bun or npm)</p>
+
+```
+$   npm i
+```
+
+<p>4. Run the app</p>
+```
+$   npm run dev
+```

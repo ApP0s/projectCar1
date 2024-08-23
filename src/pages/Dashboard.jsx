@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import carJson from "../dataRod/taladrod-cars.min.json";
-import { Container, Table } from 'react-bootstrap';
+import { Container, Table, Form } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import PieChart from '../components/pie_Chart.jsx';
 import StackedBarChart from '../components/StackedBarChart.jsx';
@@ -9,7 +9,9 @@ import '../components/Table.css';
 const Dashboard = () => {
   const carsArray = carJson.Cars; // Access the array of cars from the "Cars" key
 
-  // Step 1: Process the data to group by brand and model
+  const [searchTerm, setSearchTerm] = useState(''); // State for search term
+
+  // Process the data to group by brand and model
   const brandData = carsArray.reduce((acc, car) => {
     const brand = car.NameMMT.split(' ')[0]; // Get the brand name (e.g., "HONDA")
     const model = car.Model;
@@ -33,11 +35,27 @@ const Dashboard = () => {
     return acc;
   }, {});
 
-  // Step 2: Render the table using react-bootstrap's Table component
+  // Filter the data based on the search term, only by brand
+  const filteredBrandData = Object.keys(brandData).reduce((acc, brand) => {
+    if (brand.toLowerCase().includes(searchTerm.toLowerCase())) {
+      acc[brand] = brandData[brand];
+    }
+    return acc;
+  }, {});
+
+  // Render the table using react-bootstrap's Table component
   return (
     <Container>
-      <PieChart/>
-      <StackedBarChart/>
+      <PieChart />
+      <StackedBarChart />
+      <Form.Group className="mb-3" controlId="search">
+        <Form.Control
+          type="text"
+          placeholder="Search by brand"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+      </Form.Group>
       <div className="table-container">
         <Table striped bordered hover>
           <thead>
@@ -48,23 +66,23 @@ const Dashboard = () => {
             </tr>
           </thead>
           <tbody>
-            {Object.keys(brandData).map((brand) => (
+            {Object.keys(filteredBrandData).map((brand) => (
               <React.Fragment key={brand}>
                 <tr>
                   <td>
                     <strong>{brand}</strong>
                   </td>
-                  <td>{brandData[brand].count}</td>
-                  <td>{brandData[brand].totalValue.toLocaleString()}</td>
+                  <td>{filteredBrandData[brand].count}</td>
+                  <td>{filteredBrandData[brand].totalValue.toLocaleString()}</td>
                 </tr>
-                {Object.keys(brandData[brand].models).map((model) => (
+                {Object.keys(filteredBrandData[brand].models).map((model) => (
                   <tr key={model}>
                     <td style={{ paddingLeft: "20px" }}>
                       {brand} / {model}
                     </td>
-                    <td>{brandData[brand].models[model].count}</td>
+                    <td>{filteredBrandData[brand].models[model].count}</td>
                     <td>
-                      {brandData[brand].models[model].totalValue.toLocaleString()}
+                      {filteredBrandData[brand].models[model].totalValue.toLocaleString()}
                     </td>
                   </tr>
                 ))}

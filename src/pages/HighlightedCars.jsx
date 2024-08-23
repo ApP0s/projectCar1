@@ -66,9 +66,6 @@ const HighlightedCars = () => {
   return (
     <Container className="mt-4">
       <Row className="align-items-center mb-4">
-        <Col xs={12} md={6}>
-          <h1>Highlighted Cars</h1>
-        </Col>
         <Col xs={12} md={6} className="d-flex justify-content-md-end justify-content-center">
           <InputGroup className="w-100">
             <Form.Control

@@ -10,16 +10,16 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Root/>,
+    element: <Root />,
     errorElement: <div>404 not Found</div>,
     children: [
       {
-        path: "/Dashboard",
+        path: "/", // Change from "/Dashboard" to "/"
         element: <Dashboard />,
       },
       {
         path: '/Hightlight',
-        element: <HighlightedCars/>,
+        element: <HighlightedCars />,
       },
     ],
   },

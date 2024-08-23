@@ -50,38 +50,39 @@ const StackedBarChart = () => {
   const options = {
     plugins: {
       title: {
-        display: true,
-        text: 'Number of Cars by Model and Brand',
+        display: false,
       },
       legend: {
-        position: 'bottom',
-        labels: {
-          boxWidth: 10,
+        display: false,
+      },
+      tooltip: {
+        callbacks: {
+          title: (tooltipItems) => tooltipItems[0].label,
+          label: (tooltipItem) => {
+            const dataset = chartData.datasets[tooltipItem.datasetIndex];
+            const brandIndex = tooltipItem.dataIndex;
+            const models = dataset.data
+              .map((value, index) => {
+                if (index === brandIndex) return `${dataset.label}: ${value}`;
+                return null;
+              })
+              .filter((item) => item !== null);
+            return models;
+          },
         },
       },
     },
-    maintainAspectRatio: false, // Allows the chart to take up more vertical space
     responsive: true,
     scales: {
       x: {
         stacked: true,
         ticks: {
-          autoSkip: false,
-          maxRotation: 45, // Rotate x-axis labels to fit them better
-          minRotation: 0,
+          autoSkip: true,
         },
       },
       y: {
         stacked: true,
         beginAtZero: true,
-        ticks: {
-          stepSize: 10, // Adjust step size for better spacing
-          padding: 15,  // Increase padding between ticks and axis line
-        },
-        grid: {
-          display: true,
-          drawBorder: false,
-        },
       },
     },
   };
