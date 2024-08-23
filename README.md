@@ -3,6 +3,8 @@
 this project is about Dashboard and Hightlight
 especially, graph and things for the owner to understand the data.
 
+<img src="https://github.com/ApP0s/projectCar1/blob/main/webgif.gif?raw=true" alt="screenshot" width="750" height="400/">
+
 ## Tool for this project
 *   React
 *   React-Bootstrap
@@ -46,5 +48,5 @@ $   npm run dev
 ```
 
 # Credit
-6510550 Chatchai Bumrungsak
-6530371 Boonyarit Thongma
+*   6510550 Chatchai Bumrungsak
+*   6530371 Boonyarit Thongma
