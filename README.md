@@ -30,7 +30,7 @@ $   git clone https://github.com/ApP0s/projectCar1.git
 <p>2. Go into the repository</p>
 
 ```
-$   cd projectcar1
+$   cd projectCar1
 ```
 
 <p>3. Install dependencies (npm)</p>
