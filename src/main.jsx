@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { createBrowserRouter, RouterProvider, Link } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Root from './pages/root';
 import Dashboard from './pages/Dashboard';
 import HighlightedCars from './pages/HighlightedCars';
-import './index.css'; // Assuming you have some global styles
+import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const router = createBrowserRouter([
@@ -20,7 +20,6 @@ const router = createBrowserRouter([
       {
         path: '/Hightlight',
         element: <HighlightedCars/>,
-        errorElement: <div>404 not Found</div>,
       },
     ],
   },

@@ -2,6 +2,9 @@ import React from 'react';
 import { Bar } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
 import carJson from '../dataRod/taladrod-cars.min.json';
+import './stacked_BarChart.css'; // Make sure the path matches your project structure
+
+
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
@@ -64,7 +67,7 @@ const StackedBarChart = () => {
   };
 
   return (
-    <div>
+    <div className="stacked-bar-container">
       <h2>Car Models by Brand (Stacked Bar Chart)</h2>
       <Bar data={chartData} options={options} />
     </div>
