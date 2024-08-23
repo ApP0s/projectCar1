@@ -1,8 +1,12 @@
-# React + Vite
+# Project 1 Car market
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+this project is about Dashboard and Hightlight
+especially, graph and things for the owner to understand the data.
 
-Currently, two official plugins are available:
+## Tool for this project
+* react 
+* react-routing
+* chart.js
+* bootstrap
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# Features to show
