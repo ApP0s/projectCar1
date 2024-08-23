@@ -22,22 +22,25 @@ Here're some of the project's best features:
 <h2>Installation Steps:</h2>
 
 <p>1. Clone this repository</p>
+
 ```
 $   git clone https://github.com/ApP0s/projectCar1.git
 ```
 
 <p>2. Go into the repository</p>
+
 ```
 $   cd projectcar1
 ```
 
-<p>3. Install dependencies (bun or npm)</p>
+<p>3. Install dependencies (npm)</p>
 
 ```
 $   npm i
 ```
 
 <p>4. Run the app</p>
+
 ```
 $   npm run dev
 ```
