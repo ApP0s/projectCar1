@@ -25,6 +25,28 @@ This section should list any major frameworks/libraries used to bootstrap your p
 * [![React-Router][ReactRouter.js]][ReactRouter-url]
 * [![ChartJS][ChartJS.js]][ChartJS-url]
 
+[React.js]: https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=white
+[React-url]: https://reactjs.org/
+
+[ReactBootstrap.js]: https://img.shields.io/badge/React--Bootstrap-00A8E1?style=for-the-badge&logo=react&logoColor=white
+[ReactBootstrap-url]: https://react-bootstrap.github.io/
+
+[Vite.js]: https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white
+[Vite-url]: https://vitejs.dev/
+
+[Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
+[Bootstrap-url]: https://getbootstrap.com/
+
+[ReactChartjs.js]: https://img.shields.io/badge/React--Chartjs-FF6384?style=for-the-badge&logo=chartjs&logoColor=white
+[ReactChartjs-url]: https://github.com/jerairrest/react-chartjs-2
+
+[ReactRouter.js]: https://img.shields.io/badge/React--Router-D0021B?style=for-the-badge&logo=react-router&logoColor=white
+[ReactRouter-url]: https://reactrouter.com/
+
+[ChartJS.js]: https://img.shields.io/badge/Chart.js-F6C23E?style=for-the-badge&logo=chartjs&logoColor=white
+[ChartJS-url]: https://www.chartjs.org/
+
+
 
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -41,8 +63,6 @@ This is an example of how to list things you need to use the software and how to
   ```
 
 ### Installation
-
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
 
 1. Clone the repo
 
