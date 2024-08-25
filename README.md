@@ -1,52 +1,67 @@
 # Project 1 Car market
-
-this project is about Dashboard and Hightlight
-especially, graph and things for the owner to understand the data.
+<!-- ABOUT THE PROJECT -->
+## About The Project
 
 <img src="https://github.com/ApP0s/projectCar1/blob/main/webgi.gif?raw=true" alt="screenshot" width="750" height="400/">
 
-## Tool for this project
-*   React
-*   React-Bootstrap
-*   Vite
-*   Bootstrap
-*   React-Chartjs
-*   React-Router
-*   ChartJS
-# Features to show
+this project is about Dashboard and Hightlight. Especially, graph and things for the owner to understand the data. This project
+make for practice and learn.
 
 Here're some of the project's best features:
-
 *   View and search total cars, total value, and cars by brand value and quantity
 *   View car images
-*   View the highlighted Car the you pin or fav
+*   View the highlighted Car the you pin or favorite
 
-<h2>Installation Steps:</h2>
 
-<p>1. Clone this repository</p>
+### Built With
 
-```
-$   git clone https://github.com/ApP0s/projectCar1.git
-```
+This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
 
-<p>2. Go into the repository</p>
+* [![React][React.js]][React-url]
+* [![React-Bootstrap][ReactBootstrap.js]][ReactBootstrap-url]
+* [![Vite][Vite.js]][Vite-url]
+* [![Bootstrap][Bootstrap.com]][Bootstrap-url]
+* [![React-Chartjs][ReactChartjs.js]][ReactChartjs-url]
+* [![React-Router][ReactRouter.js]][ReactRouter-url]
+* [![ChartJS][ChartJS.js]][ChartJS-url]
 
-```
-$   cd projectCar1
-```
 
-<p>3. Install dependencies (npm)</p>
+<!-- GETTING STARTED -->
+## Getting Started
 
-```
-$   npm i
-```
+This is an example of how you may give instructions on setting up your project locally.
+To get a local copy up and running follow these simple example steps.
 
-<p>4. Run the app</p>
+### Prerequisites
 
-```
-$   npm run dev
-```
+This is an example of how to list things you need to use the software and how to install them.
+* npm
+  ```sh
+  npm install npm@latest -g
+  ```
 
-# Credit
+### Installation
+
+_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
+
+1. Clone the repo
+
+   ```sh
+   git clone https://github.com/ApP0s/projectCar1.git
+   ```
+2. Go into the repository
+   ```sh
+   cd projectCar1
+   ```
+3. Install dependencies (npm)
+   ```sh
+   npm i
+   ```
+4. Run the app
+   ```sh
+   npm run dev
+   ```
+
+# People who create this project 
 *   6510550 Chatchai Bumrungsak
 *   6530371 Boonyarit Thongma
